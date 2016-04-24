@@ -168,4 +168,3 @@ GLOG_PREFIX_REGEX = (
 
 handler.setFormatter(GlogFormatter())
 logger.addHandler(handler)
-setLevel(FLAGS.verbosity)
