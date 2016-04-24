@@ -67,6 +67,7 @@ Happy logging!
 
 import logging
 import time
+import sys
 
 import gflags
 
@@ -127,13 +128,18 @@ def setLevel(newlevel):
 def init():
     setLevel(FLAGS.verbosity)
 
+def fatal_wrapper(x):
+    logging.fatal(x)
+    logging.shutdown()
+    sys.exit(1)
+
 debug = logging.debug
 info = logging.info
 warning = logging.warning
 warn = logging.warning
 error = logging.error
 exception = logging.exception
-fatal = logging.fatal
+fatal = fatal_wrapper
 log = logging.log
 
 DEBUG = logging.DEBUG
